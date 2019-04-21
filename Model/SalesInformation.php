@@ -7,24 +7,30 @@ use Repin\SalesInformation\Api\Data\SalesInformationInterface;
 
 class SalesInformation extends AbstractExtensibleObject implements SalesInformationInterface
 {
+
+    protected $lastOrder;
+
+    protected $qty;
+
     public function getLastOrder()
     {
-        // TODO: Implement getLastOrder() method.
+        return $this->_get('last_order');
+
     }
 
     public function getQty()
     {
-        // TODO: Implement getQty() method.
+        return $this->_get('qty');
     }
 
     public function setLastOrder($date)
     {
-        // TODO: Implement setLastOrder() method.
+        $this->setData('last_order', $date);
     }
 
     public function setQty($qty)
     {
-        // TODO: Implement setQty() method.
+        $this->setData('qty', $qty);
     }
 
     public function getExtensionAttributes()
@@ -34,17 +40,9 @@ class SalesInformation extends AbstractExtensibleObject implements SalesInformat
 
     public function setExtensionAttributes(
         \Repin\SalesInformation\Api\Data\SalesInformationExtensionInterface $extensionAttributes
-    ) {
+    )
+    {
         return $this->_setExtensionAttributes($extensionAttributes);
     }
 
-    public function setProductId($id)
-    {
-        // TODO: Implement setProductId() method.
-    }
-
-    public function getProductId()
-    {
-        // TODO: Implement getProductId() method.
-    }
 }

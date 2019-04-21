@@ -9,4 +9,25 @@
         xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <preference for="Repin\SalesInformation\Api\Data\SalesInformationInterface"
                 type="Repin\SalesInformation\Model\SalesInformation"/>
+    <preference for="Repin\SalesInformation\Api\SalesInformationRepositoryInterface"
+                type="Repin\SalesInformation\Model\SalesInformationRepository"/>
+    <type name="Magento\Catalog\Api\ProductRepositoryInterface">
+        <plugin name="joinSalesInformationToProductRepository"
+                type="Repin\SalesInformation\Model\Plugin\Product\Repository"/>
+    </type>
+
+    <!-- Rewrite Order Status -->
+    <type name="Repin\SalesInformation\Model\SalesInformationRepository">
+        <arguments>
+            <argument name="orderStatus" xsi:type="string">pending</argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="sales_information" xsi:type="object">Repin\SalesInformation\Console\Command\SalesInformatio</item>
+            </argument>
+        </arguments>
+    </type>
 </config>
