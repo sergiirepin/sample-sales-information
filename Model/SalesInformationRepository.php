@@ -2,7 +2,6 @@
 
 namespace Repin\SalesInformation\Model;
 
-
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Sales\Api\OrderItemRepositoryInterface;
 use Magento\Sales\Api\OrderRepositoryInterface;
@@ -11,7 +10,6 @@ use \Repin\SalesInformation\Api\Data\SalesInformationInterfaceFactory;
 use Repin\SalesInformation\Api\Data\SalesInformationInterface;
 use \Magento\Catalog\Api\ProductRepositoryInterface;
 use \Magento\Sales\Model\ResourceModel\Order\CollectionFactory;
-
 
 class SalesInformationRepository implements SalesInformationRepositoryInterface
 {
@@ -29,8 +27,8 @@ class SalesInformationRepository implements SalesInformationRepositoryInterface
         SearchCriteriaBuilder $searchCriteriaBuilder,
         CollectionFactory $orderCollectionFactory,
         $orderStatus = 'processing'
-    )
-    {
+    ) {
+    
         $this->orderStatus = $orderStatus;
         $this->orderItemRepository = $orderItemRepository;
         $this->orderCollectionFactory = $orderCollectionFactory;
@@ -49,8 +47,8 @@ class SalesInformationRepository implements SalesInformationRepositoryInterface
             ->addFieldToSelect(
                 '*'
             )->addFieldToFilter(
-                'status', $this->orderStatus
-
+                'status',
+                $this->orderStatus
             )->setOrder(
                 'created_at',
                 'desc'
@@ -64,7 +62,6 @@ class SalesInformationRepository implements SalesInformationRepositoryInterface
 
 
         if ($orders->getSize()) {
-
             foreach ($orders->getItems() as $item) {
                 $itemQty += $item->getData('qty_ordered');
             }

@@ -15,7 +15,6 @@ class SalesInformation extends AbstractExtensibleObject implements SalesInformat
     public function getLastOrder()
     {
         return $this->_get('last_order');
-
     }
 
     public function getQty()
@@ -40,9 +39,8 @@ class SalesInformation extends AbstractExtensibleObject implements SalesInformat
 
     public function setExtensionAttributes(
         \Repin\SalesInformation\Api\Data\SalesInformationExtensionInterface $extensionAttributes
-    )
-    {
+    ) {
+    
         return $this->_setExtensionAttributes($extensionAttributes);
     }
-
 }

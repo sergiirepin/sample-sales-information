@@ -42,7 +42,7 @@ class SalesInformation extends Command
     {
         $productSku  = $input->getArgument(self::SKU_ARGUMENT);
 
-        if(!$productSku) {
+        if (!$productSku) {
             throw new \InvalidArgumentException('Argument '. self::SKU_ARGUMENT. ' is missing.');
         }
 
@@ -53,8 +53,8 @@ class SalesInformation extends Command
             $output->writeln($e->getMessage());
             return;
         }
-
-        $output->writeLn("Last order date: {$product->getExtensionAttributes()->getSalesInformation()->getLastOrder()}");
+        
+        $output->writeLn("Last order: {$product->getExtensionAttributes()->getSalesInformation()->getLastOrder()}");
         $output->writeLn("Product qty: {$product->getExtensionAttributes()->getSalesInformation()->getQty()}");
     }
 }
